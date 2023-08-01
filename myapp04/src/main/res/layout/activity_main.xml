@@ -14,20 +14,23 @@
         />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/chkAgree"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="시작"
         />
     <TextView
+        android:id="@+id/text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="좋아하는 애완동물은?"
+        android:visibility="invisible"
         />
     <RadioGroup
         android:id="@+id/rg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         >
         <RadioButton
             android:id="@+id/rdoCat"
@@ -50,14 +53,17 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/BtnOk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="입력완료"
+        android:visibility="invisible"
         />
     <ImageView
+        android:id="@+id/ImgPet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         />
 
 </LinearLayout>
