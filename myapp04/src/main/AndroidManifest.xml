@@ -9,26 +9,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".MainActivity6"
-            android:exported="true" >
+            android:name=".MainActivity9"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity8"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity7"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity6"
+            android:exported="false">
 
         </activity>
         <activity
             android:name=".MainActivity5"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity4"
             android:exported="false" />
         <activity
             android:name=".MainActivity3"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
