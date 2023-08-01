@@ -19,6 +19,7 @@ public class MainActivity2 extends AppCompatActivity {
     RadioButton rdoQ, rdoR, rdoS;
     ImageView androidImg;
     Button btnEnd, btnFirst;
+    RadioButton[] RadioArray = new RadioButton[3];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,9 @@ public class MainActivity2 extends AppCompatActivity {
         androidImg = findViewById(R.id.androidImg);
         btnEnd = findViewById(R.id.btnEnd);
         btnFirst = findViewById(R.id.btnFirst);
+        RadioArray[0] = findViewById(R.id.rdoQ);
+        RadioArray[1] = findViewById(R.id.rdoR);
+        RadioArray[2] = findViewById(R.id.rdoS);
 
         switchSt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -48,18 +52,30 @@ public class MainActivity2 extends AppCompatActivity {
                 }
             }
         });
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if(i==R.id.rdoR){
-                    androidImg.setImageResource(R.drawable.r11);
-                }else if(i==R.id.rdoS){
-                    androidImg.setImageResource(R.drawable.s12);
-                }else if(i==R.id.rdoQ){
-                    androidImg.setImageResource(R.drawable.q10);
+
+        final int draw[] = {R.drawable.q10, R.drawable.r11, R.drawable.s12};
+        for(int i=0; i<RadioArray.length; i++){
+            final int index;
+            index = i;
+            RadioArray[index].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    androidImg.setImageResource(draw[index]);
                 }
-            }
-        });
+            });
+        }
+//        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                if(i==R.id.rdoR){
+//                    androidImg.setImageResource(R.drawable.r11);
+//                }else if(i==R.id.rdoS){
+//                    androidImg.setImageResource(R.drawable.s12);
+//                }else if(i==R.id.rdoQ){
+//                    androidImg.setImageResource(R.drawable.q10);
+//                }
+//            }
+//        });
         btnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +85,11 @@ public class MainActivity2 extends AppCompatActivity {
         btnFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                text2.setVisibility(View.INVISIBLE);
+                rg.setVisibility(View.INVISIBLE);
+                androidImg.setVisibility(View.INVISIBLE);
+                rg.clearCheck();
+                switchSt.setChecked(false);
             }
         });
 
