@@ -9,11 +9,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".MainActivity7_output"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity7_input"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity7"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity6_sub"
             android:exported="false" />
         <activity
             android:name=".MainActivity6"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
