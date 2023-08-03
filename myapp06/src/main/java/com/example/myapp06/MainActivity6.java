@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -18,6 +19,8 @@ public class MainActivity6 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         main6Binding = ActivityMain6Binding.inflate(getLayoutInflater());
         setContentView(main6Binding.getRoot());
+        
+        setTitle("양방향 액티비티");
 
         main6Binding.btn1.setOnClickListener(new View.OnClickListener() {
             @Override
