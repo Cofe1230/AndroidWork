@@ -12,10 +12,12 @@ import android.widget.Toast;
 
 import com.example.myapp05.databinding.ActivityMainUserBinding;
 import com.example.myapp05.databinding.Dialog1Binding;
+import com.example.myapp05.databinding.Toast1Binding;
 
 public class MainActivity_user extends AppCompatActivity {
     private ActivityMainUserBinding binding;
     private Dialog1Binding dialogbinding;
+    private Toast1Binding toast1Binding;
     private View toastView;
     private TextView toastText;
     @Override
@@ -24,6 +26,7 @@ public class MainActivity_user extends AppCompatActivity {
         setContentView(R.layout.activity_main_user);
         binding = ActivityMainUserBinding.inflate(getLayoutInflater());
         dialogbinding = Dialog1Binding.inflate(getLayoutInflater());
+        toast1Binding = Toast1Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setTitle("사용자 정보 입력");
 
@@ -44,10 +47,8 @@ public class MainActivity_user extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast toast = new Toast(MainActivity_user.this);
-                        toastView = View.inflate(MainActivity_user.this,R.layout.toast1,null);
-                        toastText = toastView.findViewById(R.id.toastText1);
-                        toastText.setText("취소했습니다");
-                        toast.setView(toastView);
+                        toast.setView(toast1Binding.getRoot());
+                        toast1Binding.toastText1.setText("취소했습니다");
                         toast.show();
                     }
                 });
