@@ -13,6 +13,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.example.myapp07.databinding.DialogBinding;
+
 public class MainActivity7_grid extends AppCompatActivity {
 
     @Override
@@ -59,12 +61,14 @@ public class MainActivity7_grid extends AppCompatActivity {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    View dialogView = View.inflate(MainActivity7_grid.this,R.layout.dialog,null);
-                    ImageView ivPoster = dialogView.findViewById(R.id.ivPoster);
-                    ivPoster.setImageResource(posterID[i]);
+                    DialogBinding binding;
+                    binding = DialogBinding.inflate(getLayoutInflater());
+                    //View dialogView = View.inflate(MainActivity7_grid.this,R.layout.dialog,null);
+                    //ImageView ivPoster = dialogView.findViewById(R.id.ivPoster);
+                    binding.ivPoster.setImageResource(posterID[i]);
                     AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity7_grid.this);
                     dlg.setTitle("큰 포스터");
-                    dlg.setView(dialogView);
+                    dlg.setView(binding.getRoot());
                     dlg.setNegativeButton("닫기",null);
                     dlg.show();
                 }
