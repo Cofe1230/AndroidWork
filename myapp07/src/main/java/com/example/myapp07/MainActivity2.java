@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
 import com.example.myapp07.databinding.ActivityMain2Binding;
 
@@ -22,7 +23,8 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         main2Binding = ActivityMain2Binding.inflate(getLayoutInflater());
         setContentView(main2Binding.getRoot());
-
+        setSupportActionBar(main2Binding.toolbar);
+        setTitle("양방향intent");
 
         main2Binding.btnDataInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +52,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
     }
-    ActivityResultLauncher startActivityLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+    ActivityResultLauncher<Intent> startActivityLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
             if(result.getResultCode()==RESULT_OK){
@@ -62,7 +64,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         }
     });
-    ActivityResultLauncher studentActivityLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+    ActivityResultLauncher<Intent> studentActivityLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
@@ -72,5 +74,5 @@ public class MainActivity2 extends AppCompatActivity {
                         return;
                     }
                 }
-            });
+    });
 }
