@@ -13,19 +13,24 @@ public class MainActivity7_output extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main_activity7_output);
+
+        TextView tvDisplay = findViewById(R.id.tvDisplay);
+        TextView tvDisplay2 = findViewById(R.id.tvDisplay2);
+        Button btnMainBack = findViewById(R.id.btnMainBack);
 
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
         age = intent.getStringExtra("age");
         phone = intent.getStringExtra("phone");
 
-        TextView tvDisplay = findViewById(R.id.tvDisplay);
+
         tvDisplay.setText("이름 : " +name +" 나이 : "+age+" 전화번호 : "+phone);
-        Button btnMainBack = findViewById(R.id.btnMainBack);
-
-
-
+        Student student = (Student) intent.getSerializableExtra("student");
+        if(student !=null){
+            tvDisplay2.setText("학생 객체 : " + student.getSno() +", "+student.getName()+", "+student.getMajor());
+        }
         btnMainBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

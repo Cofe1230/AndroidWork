@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".MainActivity7_stu"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity7_output"
             android:exported="false" />
         <activity

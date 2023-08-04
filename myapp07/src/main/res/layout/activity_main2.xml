@@ -4,27 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity7_output"
+    tools:context=".MainActivity2"
     android:orientation="vertical"
     android:gravity="center">
-    <TextView
-        android:id="@+id/tvDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="입력결과"
-        android:textSize="15sp"/>
-    <TextView
-        android:id="@+id/tvDisplay2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="학생 입력결과"
-        android:textSize="15sp"/>
     <Button
-        android:id="@+id/btnMainBack"
+        android:id="@+id/btnDataInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="돌아가기"
-        android:layout_margin="10dp"/>
+        android:text="데이터 입력"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/btnDataOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="데이터출력"/>
+    <Button
+        android:id="@+id/btnDataStu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="학생목록"
+        android:textSize="20sp"/>
 
 </LinearLayout>
