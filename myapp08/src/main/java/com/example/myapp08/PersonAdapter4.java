@@ -28,12 +28,17 @@ public class PersonAdapter4 extends RecyclerView.Adapter<PersonAdapter4.ViewHold
     //추가
     public void addItem(Person4 person4){
         personList.add(person4);
-        notifyDataSetChanged();
+        this.notifyDataSetChanged();
     }
     //삭제
     public void removeItem(int position){
         personList.remove(position);
-        notifyDataSetChanged();
+        notifyItemRemoved(position);
+    }
+    //수정
+    public void updateItem(Person4 person4,int position){
+        personList.set(position,person4);
+        notifyItemChanged(position);
     }
 
     @NonNull

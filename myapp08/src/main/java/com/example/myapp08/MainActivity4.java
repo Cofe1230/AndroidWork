@@ -48,6 +48,11 @@ public class MainActivity4 extends AppCompatActivity {
         binding.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                personAdapter4.updateItem(new Person4(binding.editName.getText().toString(),binding.editTel.getText().toString()),position);
+                binding.editName.setText("");
+                binding.editTel.setText("");
+                binding.btnUpdate.setEnabled(false);
+                binding.btnDelete.setEnabled(false);
 
             }
         });
@@ -59,6 +64,7 @@ public class MainActivity4 extends AppCompatActivity {
                 binding.editTel.setText("");
                 binding.btnUpdate.setEnabled(false);
                 binding.btnDelete.setEnabled(false);
+
             }
         });
     }
