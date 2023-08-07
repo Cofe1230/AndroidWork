@@ -14,8 +14,11 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MainActivity7_movie"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity7_grid"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
