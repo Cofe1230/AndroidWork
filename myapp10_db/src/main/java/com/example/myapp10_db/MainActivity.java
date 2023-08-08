@@ -2,6 +2,7 @@ package com.example.myapp10_db;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,7 +58,53 @@ public class MainActivity extends AppCompatActivity {
                 output("테이블 생성 : " +tableName);
             }
         });
+        btnInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setText("");
+                String tableName = etTable.getText().toString();
+                if (sqLiteDatabase == null) {
+                    output("데이터베이스를 생성하세요");
+                    return;
+                }
+                if (tableName == null) {
+                    output("테이블을 생성하세요");
+                    return;
+                }
+                output("btnInsert 호출");
+                String sql = "insert into " + tableName +
+                        "(name, age, phone) "+
+                        "values('안드로이드',11,'010-1111-2222')";
+                sqLiteDatabase.execSQL(sql);
+                output("안드로이드 추가");
+            }
+        });
 
+        btnSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setText("");
+                String tableName = etTable.getText().toString();
+                if (sqLiteDatabase == null) {
+                    output("데이터베이스를 생성하세요");
+                    return;
+                }
+                if (tableName == null) {
+                    output("테이블을 생성하세요");
+                    return;
+                }
+                output("btnSelect 호출");
+                String sql = "select * from "+tableName;
+                Cursor cursor = sqLiteDatabase.rawQuery(sql,null);
+                while(cursor.moveToNext()){
+                    int id = cursor.getInt(0);
+                    String name = cursor.getString(1);
+                    int age = cursor.getInt(2);
+                    String phone = cursor.getString(3);
+                    output(id+"//"+name+"//"+age+"//"+phone);
+                }
+            }
+        });
 
     }
     private void output(String str){
