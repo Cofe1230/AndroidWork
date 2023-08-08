@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class PersonAdapter4 extends RecyclerView.Adapter<PersonAdapter4.ViewHolder> {
     ArrayList<Person4> personList = new ArrayList<>();
-    ItemPhone3Binding binding;
     //인터페이스
     public interface onItemClickListener{
         void onItemClick(int pos);
@@ -33,20 +32,20 @@ public class PersonAdapter4 extends RecyclerView.Adapter<PersonAdapter4.ViewHold
     //삭제
     public void removeItem(int position){
         personList.remove(position);
-        notifyItemRemoved(position);
+        this.notifyDataSetChanged();
     }
     //수정
     public void updateItem(Person4 person4,int position){
         personList.set(position,person4);
-        notifyItemChanged(position);
+        this.notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public PersonAdapter4.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_phone3,parent,false );
-        binding = ItemPhone3Binding.inflate(LayoutInflater.from(parent.getContext()));
-        return new ViewHolder(binding.getRoot());
+        ItemPhone3Binding binding = ItemPhone3Binding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        return new ViewHolder(binding);
     }
 
     @Override
@@ -61,8 +60,10 @@ public class PersonAdapter4 extends RecyclerView.Adapter<PersonAdapter4.ViewHold
         return personList==null?0:personList.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        ItemPhone3Binding binding;
+        public ViewHolder(ItemPhone3Binding binding) {
+            super(binding.getRoot());
+            this.binding=binding;
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -4,6 +4,11 @@ public class Friend {
     private String name;
     private String msg;
 
+    public Friend(String name, String msg) {
+        this.name = name;
+        this.msg = msg;
+    }
+
     public String getName() {
         return name;
     }
