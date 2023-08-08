@@ -31,6 +31,9 @@ public class MainActivity2 extends AppCompatActivity {
                 sqLiteDatabase = mydbHelper.getWritableDatabase();
                 mydbHelper.onUpgrade(sqLiteDatabase,1,2);
                 sqLiteDatabase.close();
+                binding.btnSelect.callOnClick();
+                Toast.makeText(getApplicationContext(),"초기화 완료", Toast.LENGTH_SHORT).show();
+
             }
         });
         binding.btnInsert.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +47,7 @@ public class MainActivity2 extends AppCompatActivity {
                 statement.execute();
 
                 sqLiteDatabase.close();
+                binding.btnSelect.callOnClick();
 
                 Toast.makeText(getApplicationContext(),"입력", Toast.LENGTH_SHORT).show();
             }

@@ -17,5 +17,24 @@
         android:id="@+id/edtDiary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ssss"/>
+        android:hint="할 일"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:background="#DDDD00">
+    <TextView
+        android:id="@+id/txtTodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="할일"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="수정하기"/>
 </LinearLayout>
