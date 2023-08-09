@@ -3,14 +3,16 @@ package com.example.myapp12;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity2 extends AppCompatActivity {
-
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         setTitle("seekbar,prgressbar");
 
-        ProgressBar progressBar = findViewById(R.id.progressBar2);
+        progressBar = findViewById(R.id.progressBar2);
         Button btnInc = findViewById(R.id.btnInc);
         Button btnDec = findViewById(R.id.btnDec);
         SeekBar seekBar = findViewById(R.id.seekBar2);
@@ -27,7 +29,10 @@ public class MainActivity2 extends AppCompatActivity {
         btnInc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.incrementProgressBy(10);
+                //progressBar.incrementProgressBy(10);
+                makeThread();
+                Toast.makeText(getApplicationContext(),progressBar.getProgress()+"",Toast.LENGTH_SHORT).show();
+
             }
         });
         btnDec.setOnClickListener(new View.OnClickListener() {
@@ -53,5 +58,16 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+    }
+    public void makeThread(){
+        new Thread(){
+            @Override
+            public void run() {
+                while(progressBar.getProgress()<progressBar.getMax()){
+                    progressBar.incrementProgressBy(10);
+                    SystemClock.sleep(1000);
+                }
+            }
+        }.start();
     }
 }
