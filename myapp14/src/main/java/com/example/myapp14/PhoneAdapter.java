@@ -16,7 +16,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
 
     //클릭interface
     public interface OnItemClickListener{
-        public void onItemClick(int pos);
+        void onItemClick(int pos);
     }
     private OnItemClickListener onItemClickListener;
 
@@ -24,11 +24,29 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
         this.onItemClickListener = onItemClickListener;
     }
 
+    public interface OnItemLongClickListener{
+        void onItemLongClick(int pos);
+    }
+    OnItemLongClickListener onItemLongClickListener;
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
+
     //추가
     public void addItem(Phone phone){
         phoneList.add(phone);
         notifyDataSetChanged();
     }
+    //삭제
+    public void deleteItem(int pos){
+        phoneList.remove(pos);
+        notifyDataSetChanged();
+    }
+    public Phone getItem(int position){
+        return phoneList.get(position);
+    }
+
 
     public PhoneAdapter(List<Phone> phoneList) {
         this.phoneList = phoneList;
@@ -65,6 +83,14 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     onItemClickListener.onItemClick(position);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int position = getAdapterPosition();
+                    onItemLongClickListener.onItemLongClick(position);
+                    return false;
                 }
             });
 

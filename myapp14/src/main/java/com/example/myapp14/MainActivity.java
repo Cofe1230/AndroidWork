@@ -48,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
                 for(Phone phone:response.body()){
-                    phoneAdapter.addItem(phone);
+                    phoneList.add(phone);
                 }
+                phoneAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -61,18 +62,61 @@ public class MainActivity extends AppCompatActivity {
         phoneAdapter.setOnItemClickListener(new PhoneAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
+                Phone phone = phoneAdapter.getItem(pos);
                 View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.add_layout,null);
+
+                EditText editName = dialogView.findViewById(R.id.editName);
+                EditText editTel = dialogView.findViewById(R.id.editTel);
+
+                editName.setText(phone.getName().toString());
+                editTel.setText(phone.getTel().toString());
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
                 alertDialog.setTitle("수정하기");
                 alertDialog.setView(dialogView);
 
                 alertDialog.setPositiveButton("수정",null);
-                alertDialog.setNegativeButton("삭제",null);
+                alertDialog.setNegativeButton("삭제", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        long id = phone.getId();
+                        Call<Void> call = phoneService.deleteById(id);
+                        call.enqueue(new Callback<Void>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                phoneAdapter.deleteItem(pos);
+                            }
+
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
 
                 alertDialog.show();
             }
         });
+        //길게 클릭
+//        phoneAdapter.setOnItemLongClickListener(new PhoneAdapter.OnItemLongClickListener() {
+//            @Override
+//            public void onItemLongClick(int pos) {
+//                long id = phoneAdapter.getItem(pos).getId();
+//                Call<Void> call = phoneService.deleteById(id);
+//                call.enqueue(new Callback<Void>() {
+//                    @Override
+//                    public void onResponse(Call<Void> call, Response<Void> response) {
+//                        phoneAdapter.deleteItem(pos);
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Void> call, Throwable t) {
+//
+//                    }
+//                });
+//            }
+//        });
 
         floatingBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
