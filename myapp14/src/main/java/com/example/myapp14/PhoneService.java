@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface PhoneService {
@@ -21,7 +22,7 @@ public interface PhoneService {
     @DELETE("/delete/{id}")
     Call<Void> deleteById(@Path("id") long id);
 
-    @POST("/update/{id}")
+    @PUT("/update/{id}")
     Call<Phone> updatebyId(@Path("id") long id,@Body Phone phone);
 
 }

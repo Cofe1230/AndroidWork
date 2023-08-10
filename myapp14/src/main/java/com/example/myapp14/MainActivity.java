@@ -119,24 +119,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //길게 클릭
-//        phoneAdapter.setOnItemLongClickListener(new PhoneAdapter.OnItemLongClickListener() {
-//            @Override
-//            public void onItemLongClick(int pos) {
-//                long id = phoneAdapter.getItem(pos).getId();
-//                Call<Void> call = phoneService.deleteById(id);
-//                call.enqueue(new Callback<Void>() {
-//                    @Override
-//                    public void onResponse(Call<Void> call, Response<Void> response) {
-//                        phoneAdapter.deleteItem(pos);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<Void> call, Throwable t) {
-//
-//                    }
-//                });
-//            }
-//        });
+        phoneAdapter.setOnItemLongClickListener(new PhoneAdapter.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(int pos) {
+                long id = phoneAdapter.getItem(pos).getId();
+                Call<Void> call = phoneService.deleteById(id);
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        phoneAdapter.deleteItem(pos);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
 
         floatingBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
