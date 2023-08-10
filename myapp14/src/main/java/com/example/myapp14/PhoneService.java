@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 public interface PhoneService {
     //전체보기
-    @GET("/selectAll")
+    @GET("/list")
     Call<List<Phone>> findAll();
     //추가
     @POST("/insert")
