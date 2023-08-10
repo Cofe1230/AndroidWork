@@ -21,4 +21,7 @@ public interface PhoneService {
     @DELETE("/delete/{id}")
     Call<Void> deleteById(@Path("id") long id);
 
+    @POST("/update/{id}")
+    Call<Phone> updatebyId(@Path("id") long id,@Body Phone phone);
+
 }

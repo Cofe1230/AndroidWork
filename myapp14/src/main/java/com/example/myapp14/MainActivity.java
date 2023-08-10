@@ -75,11 +75,31 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.setTitle("수정하기");
                 alertDialog.setView(dialogView);
 
-                alertDialog.setPositiveButton("수정",null);
+                long id = phone.getId();
+
+                alertDialog.setPositiveButton("수정", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Phone updatePhone = new Phone();
+                        updatePhone.setName(editName.getText().toString());
+                        updatePhone.setTel(editTel.getText().toString());
+                        Call<Phone> call = phoneService.updatebyId(id,updatePhone);
+                        call.enqueue(new Callback<Phone>() {
+                            @Override
+                            public void onResponse(Call<Phone> call, Response<Phone> response) {
+                                phoneAdapter.updateItem(pos,response.body());
+                            }
+
+                            @Override
+                            public void onFailure(Call<Phone> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
                 alertDialog.setNegativeButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        long id = phone.getId();
                         Call<Void> call = phoneService.deleteById(id);
                         call.enqueue(new Callback<Void>() {
                             @Override

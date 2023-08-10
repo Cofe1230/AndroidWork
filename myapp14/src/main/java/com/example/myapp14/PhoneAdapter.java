@@ -38,6 +38,11 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.MyViewHolder
         phoneList.add(phone);
         notifyDataSetChanged();
     }
+    //수정
+    public void updateItem(int pos,Phone phone){
+        phoneList.set(pos,phone);
+        notifyDataSetChanged();
+    }
     //삭제
     public void deleteItem(int pos){
         phoneList.remove(pos);
