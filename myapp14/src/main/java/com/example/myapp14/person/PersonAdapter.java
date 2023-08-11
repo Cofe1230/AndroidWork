@@ -53,10 +53,11 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.MyViewHold
         personList.set(pos,person);
         notifyDataSetChanged();
     }
+    //findByPosition
     public Person getItem(int pos){
         return personList.get(pos);
     }
-
+    ///////////////////////////////////////////////////
 
     @NonNull
     @Override
