@@ -65,7 +65,8 @@ public class PersonAdapter4 extends RecyclerView.Adapter<PersonAdapter4.ViewHold
             super(binding.getRoot());
             this.binding=binding;
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
