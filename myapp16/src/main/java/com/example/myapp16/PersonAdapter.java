@@ -20,8 +20,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
-    ArrayList<Person> personList;
-    PersonService personService = PersonClient.getInstance().getPersonService();
+    private ArrayList<Person> personList;
+    private PersonService personService = PersonClient.getInstance().getPersonService();
 
     public PersonAdapter(ArrayList<Person> personList) {
         this.personList = personList;

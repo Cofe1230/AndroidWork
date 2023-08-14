@@ -22,10 +22,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
-    PersonAdapter personAdapter;
-    ArrayList<Person> personList = new ArrayList<>();
-    PersonService personService;
+    private ActivityMainBinding binding;
+    private PersonAdapter personAdapter;
+    private ArrayList<Person> personList = new ArrayList<>();
+    private PersonService personService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
