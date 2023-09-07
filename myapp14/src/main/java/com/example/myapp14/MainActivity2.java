@@ -73,7 +73,6 @@ public class MainActivity2 extends AppCompatActivity {
                         binding.btnUpdate.setEnabled(false);
                         binding.btnDelete.setEnabled(false);
                     }
-
                     @Override
                     public void onFailure(Call<Person> call, Throwable t) {
 
