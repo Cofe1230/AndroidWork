@@ -1,7 +1,19 @@
-https://developer.android.com/studio
-설치
-create device
+# 안드로이드 수업
+## 개발 환경
+### Android Studio 설치
+https://developer.android.com/studio  
 
+### app
+버튼 클릭시 Toast가 나오는 기능
+```java
+btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"aaa",Toast.LENGTH_LONG).show();
+            }
+        });
+```
+### myapp02
 myapp02
 안드로이드 Toast
 안드로이드 intent
